@@ -1,0 +1,48 @@
+@mixin set-data-in-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+section {
+  padding: 1.5rem;
+  .widget-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    padding: 1.2rem;
+    max-width: 400px;
+    border-radius: 20px;
+    color: #FFF;
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @media only screen and (min-width: 425px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .drawing-container {
+      @include set-data-in-container;
+      .img-container {
+        min-height: 100px;
+      }
+      .weather-description {
+        padding-top: .5rem;
+      }
+    }
+
+    .degree-container {
+      @include set-data-in-container;
+      .city-name {
+        font-size: 1.2rem;
+      }
+      .degree {
+        font-size: 3.5rem;
+        font-weight: bold;
+      }
+      @media only screen and (min-width: 425px) {
+        text-align: center;
+      }
+    }
+  }
+
+}
