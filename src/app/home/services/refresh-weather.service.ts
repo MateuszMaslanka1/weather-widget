@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import { forkJoin, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FullWeatherData } from '../model/full-weather-data.interface';
 
