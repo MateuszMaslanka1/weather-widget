@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherData } from '../model/weather-data.interface';
 
 @Component({
@@ -6,16 +6,16 @@ import { WeatherData } from '../model/weather-data.interface';
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
-export class WeatherWidgetComponent implements OnChanges {
+export class WeatherWidgetComponent {
 
   constructor() { }
 
-  @Input() weatherData?: WeatherData;
-
-  ngOnChanges(): void {
-    if (this.weatherData) {
-      console.log(this.weatherData)
-    }
-  }
+  @Input() weatherData: WeatherData = {
+    weatherIcon: '',
+    description: '',
+    degree: '',
+    cityName: '',
+    id: ''
+  };
 
 }

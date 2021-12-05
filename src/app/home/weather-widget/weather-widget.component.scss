@@ -5,14 +5,12 @@
 }
 
 section {
-  padding: 1.5rem;
+  padding-bottom: 1.5rem;
   .widget-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
     padding: 1.2rem;
-    max-width: 450px;
-    width: 100%;
     border-radius: 20px;
     color: #FFF;
     background-color: #045de9;

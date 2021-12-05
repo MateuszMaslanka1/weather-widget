@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import { environment } from 'src/environments/environment';
+import { FullWeatherData } from '../model/full-weather-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,17 @@ export class RefreshWeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  weatherApi(id: string): Observable<Object> {
-    return this.httpClient.get(`http://api.openweathermap.org/data/2.5/weather?id=${id}&appid=b7fd55ae9eb65b6ae897e500d292df43&units=metric`);
+  weatherApi(id: string): Observable<FullWeatherData> {
+    return this.httpClient.get<FullWeatherData>(environment.API_URL, {
+      params: {
+        id: id,
+        appid: environment.appid,
+        units: environment.units
+      },
+    });
   }
 
-  refreshWeather(getCity: string[]): Observable<Object[]> {
+  refreshWeather(getCity: string[]): Observable<FullWeatherData[]> {
     return forkJoin(getCity.map((id: string) => this.weatherApi(id)));
   }
 }
