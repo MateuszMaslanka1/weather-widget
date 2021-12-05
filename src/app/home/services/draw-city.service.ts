@@ -13,11 +13,9 @@ export class DrawCity {
 
   public drawCity(): void {
     this.cityKey = this.cityIdObj[Math.floor(Math.random() * this.cityIdObj.length)];
-
     const filtredCityId = this.cityIdObj.filter((el) => {
       return el !== this.cityKey
     });
-
     this.cityIdObj = filtredCityId;
     this.chosenCity.push(this.cityKey);
   }
