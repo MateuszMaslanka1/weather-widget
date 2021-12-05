@@ -9,7 +9,7 @@
     <div class="degree-container">
       <p class="city-name">{{weatherData?.cityName}}</p>
       <div class="degree">
-        <span>{{weatherData?.degree}}</span><span> &#176;c</span>
+        <span>{{weatherData?.degree | number : '1.0-0'}}</span><span> &#176;c</span>
       </div>
     </div>
   </a>
