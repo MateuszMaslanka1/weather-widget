@@ -23,11 +23,12 @@ export class DrawCity {
   }
 
   public setCity(cityIdObj: string[]): string[] {
+    this.chosenCity = [];
     this.cityIdObj = cityIdObj;
-    const times: number = 2;
+    const times: number = 3;
     for (let i: number = 0; i < times; i++) {
       this.drawCity();
     }
-    return this.cityIdObj;
+    return this.chosenCity;
   }
 }
