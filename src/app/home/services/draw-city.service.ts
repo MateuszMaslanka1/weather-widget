@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CityId } from '../model/city-id.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +7,22 @@ export class DrawCity {
 
   constructor() { }
 
-  private cityIdObj: CityId = {};
+  private cityIdObj: string[]= [];
   public cityKey: string = '';
-  private chosenCity: CityId = {};
+  private chosenCity: string[] = [];
 
   public drawCity(): void {
-    const cityObjectKeys: string[] = Object.keys(this.cityIdObj);
-    // console.log(cityObjectKeys.length, cityObjectKeys)
-    this.cityKey = cityObjectKeys[Math.floor(Math.random() * cityObjectKeys.length)];
-    const newCityIdObj = Object.keys(this.cityIdObj).reduce((cityObject: CityId, key: string) => {
-      key !== this.cityKey ? cityObject[key] = this.cityIdObj[key] :
-        this.chosenCity[this.cityKey] = this.cityIdObj[this.cityKey];
-      return cityObject
-    }, {});
-    this.cityIdObj = newCityIdObj;
+    this.cityKey = this.cityIdObj[Math.floor(Math.random() * this.cityIdObj.length)];
+
+    const filtredCityId = this.cityIdObj.filter((el) => {
+      return el !== this.cityKey
+    });
+
+    this.cityIdObj = filtredCityId;
+    this.chosenCity.push(this.cityKey);
   }
 
-  public setCity(cityIdObj: CityId): CityId {
+  public setCity(cityIdObj: string[]): string[] {
     this.cityIdObj = cityIdObj;
     const times: number = 2;
     for (let i: number = 0; i < times; i++) {

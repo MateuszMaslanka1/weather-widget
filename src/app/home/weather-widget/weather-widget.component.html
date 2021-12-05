@@ -1,16 +1,16 @@
 <section>
-  <div class="widget-container">
+  <a class="widget-container" target="_blank" href="https://openweathermap.org/city/{{weatherData?.id}}">
     <div class="drawing-container">
       <div class="img-container">
-        <img class="weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" />
+        <img class="weather-icon" src="http://openweathermap.org/img/wn/{{weatherData?.weatherIcon}}@2x.png" alt="weather icon" />
       </div>
-      <p class="weather-description">broken clouds</p>
+      <p class="weather-description">{{weatherData?.description}}</p>
     </div>
     <div class="degree-container">
-      <p class="city-name">Łódź Voivodeship</p>
+      <p class="city-name">{{weatherData?.cityName}}</p>
       <div class="degree">
-        <span>25</span><span> &#176;c</span>
+        <span>{{weatherData?.degree}}</span><span> &#176;c</span>
       </div>
     </div>
-  </div>
+  </a>
 </section>

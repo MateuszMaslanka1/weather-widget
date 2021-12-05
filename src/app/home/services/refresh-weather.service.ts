@@ -1,27 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CityId } from '../model/city-id.interface';
-import { DrawCity } from './draw-city.service';
-import { WeatherApiService } from './weather-api.service';
+import { Observable } from 'rxjs';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RefreshWeatherService {
 
-  constructor(private drawCity: DrawCity, weatherApiService: WeatherApiService) { }
+  constructor(private httpClient: HttpClient) { }
 
-  private cityIdObj: CityId = {
-    Berlin: '2950159',
-    Warszawa: '7531926',
-    Lodz: '3337493',
-    NewYork: '5128638',
-    London: '2643743'
-  };
+  weatherApi(id: string): Observable<Object> {
+    return this.httpClient.get(`http://api.openweathermap.org/data/2.5/weather?id=${id}&appid=b7fd55ae9eb65b6ae897e500d292df43&units=metric`);
+  }
 
-  refreshWeather() {
-    // console.log(this.drawCity.getCity());
-    setInterval(() => {
-      console.log(this.drawCity.setCity(this.cityIdObj));
-    }, 60000);
+  refreshWeather(getCity: string[]): Observable<Object[]> {
+    return forkJoin(getCity.map((id: string) => this.weatherApi(id)));
   }
 }

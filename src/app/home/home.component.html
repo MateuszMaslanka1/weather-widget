@@ -1,6 +1,4 @@
 <section>
-  <app-weather-widget></app-weather-widget>
-  <app-weather-widget></app-weather-widget>
-  <app-weather-widget></app-weather-widget>
+  <app-weather-widget [weatherData]="weatherItem" *ngFor="let weatherItem of weatherDataObject | async"></app-weather-widget>
 </section>
 

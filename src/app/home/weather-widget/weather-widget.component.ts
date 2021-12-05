@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { WeatherData } from '../model/weather-data.interface';
 
 @Component({
   selector: 'app-weather-widget',
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
-export class WeatherWidgetComponent implements OnInit {
+export class WeatherWidgetComponent implements OnChanges {
 
   constructor() { }
 
-  ngOnInit(): void {
+  @Input() weatherData?: WeatherData;
+
+  ngOnChanges(): void {
+    if (this.weatherData) {
+      console.log(this.weatherData)
+    }
   }
 
 }
