@@ -20,3 +20,11 @@ time, mark, audio, video {
 	vertical-align: baseline;
   font-family: 'Montserrat', sans-serif;
 }
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
