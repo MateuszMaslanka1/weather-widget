@@ -23,8 +23,8 @@ export class DrawCity {
   public setCity(cityIdObj: string[]): string[] {
     this.chosenCity = [];
     this.cityIdObj = cityIdObj;
-    const times: number = 3;
-    for (let i: number = 0; i < times; i++) {
+    const times = 3;
+    for (let i = 0; i < times; i++) {
       this.drawCity();
     }
     return this.chosenCity;
