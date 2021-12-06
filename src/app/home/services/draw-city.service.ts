@@ -8,12 +8,12 @@ export class DrawCity {
   constructor() { }
 
   private cityIdObj: string[]= [];
-  public cityKey: string = '';
+  private cityKey: string = '';
   private chosenCity: string[] = [];
 
   public drawCity(): void {
     this.cityKey = this.cityIdObj[Math.floor(Math.random() * this.cityIdObj.length)];
-    const filtredCityId = this.cityIdObj.filter((el) => {
+    const filtredCityId = this.cityIdObj.filter((el: string) => {
       return el !== this.cityKey
     });
     this.cityIdObj = filtredCityId;

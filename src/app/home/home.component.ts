@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ];
 
  private drawCityArray: string[] = [];
- private countSeconds: number = 0;
+ private changeCitiesCounter: number = 0;
  public weatherDataObject?: Observable<WeatherData[]>;
 
   ngOnInit(): void {
@@ -35,15 +35,15 @@ export class HomeComponent implements OnInit {
 
   startInterval(): void {
     setInterval((): void => {
-      this.countSeconds++;
+      this.changeCitiesCounter++;
       this.weatherDataApi();
     }, 10000);
   };
 
   weatherDataApi(): void {
-    if (this.countSeconds === 6) {
+    if (this.changeCitiesCounter === 6) {
       this.drawCityArray = this.drawCity.setCity(this.cityIdTab);
-      this.countSeconds = 0;
+      this.changeCitiesCounter = 0;
     }
     this.weatherDataObject = this.refreshWeatherService.refreshWeather(this.drawCityArray).pipe(
       map((response: FullWeatherData[]) => response.map((item: any) => {
