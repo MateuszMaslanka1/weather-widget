@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FullWeatherData } from './model/full-weather-data.interface';
-import { WeatherData } from './model/weather-data.interface';
+import { FullWeatherData } from './models/full-weather-data.interface';
+import { WeatherData } from './models/weather-data.interface';
 import { DrawCity } from './services/draw-city.service';
 import { RefreshWeatherService } from './services/refresh-weather.service';
 
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     '3337493',
     '5128638',
     '2643743'
- ];
+  ];
 
  private drawCityArray: string[] = [];
  private countSeconds: number = 0;
