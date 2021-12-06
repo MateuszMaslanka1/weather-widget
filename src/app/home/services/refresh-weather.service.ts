@@ -22,6 +22,6 @@ export class RefreshWeatherService {
   }
 
   refreshWeather(getCity: string[]): Observable<FullWeatherData[]> {
-    return forkJoin(getCity.map((id: string) => this.weatherApi(id)));
+    return forkJoin(getCity.map((id: string): Observable<FullWeatherData> => this.weatherApi(id)));
   }
 }

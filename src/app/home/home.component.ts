@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ];
 
  private drawCityArray: string[] = [];
- private changeCitiesCounter: number = 0;
+ private changeCitiesCounter = 0;
  public weatherDataObject?: Observable<WeatherData[]>;
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       this.changeCitiesCounter = 0;
     }
     this.weatherDataObject = this.refreshWeatherService.refreshWeather(this.drawCityArray).pipe(
-      map((response: FullWeatherData[]) => response.map((item: any) => {
+      map((response: FullWeatherData[]): WeatherData[] => response.map((item: FullWeatherData): WeatherData => {
         return <WeatherData>{
           weatherIcon: item.weather[0].icon,
           description: item.weather[0].description,

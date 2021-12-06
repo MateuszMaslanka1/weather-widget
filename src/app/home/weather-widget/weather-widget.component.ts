@@ -13,8 +13,8 @@ export class WeatherWidgetComponent {
   @Input() weatherData: WeatherData = {
     weatherIcon: '',
     description: '',
-    degree: '',
+    degree: 0,
     cityName: '',
-    id: ''
+    id: 0
   };
 }
