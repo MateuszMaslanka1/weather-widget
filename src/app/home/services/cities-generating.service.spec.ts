@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DrawCity } from './draw-city.service';
+import { DrawCity } from './cities-generating.service';
 
 describe('WeatherApiService', () => {
   let service: DrawCity;

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { WeatherData } from '../models/weather-data.interface';
+import { OpenWeatherMapMappedData } from '../models/open-weather-map-mapped-data.interface';
 
 @Component({
   selector: 'app-weather-widget',
@@ -8,9 +8,7 @@ import { WeatherData } from '../models/weather-data.interface';
 })
 export class WeatherWidgetComponent {
 
-  constructor() { }
-
-  @Input() weatherData: WeatherData = {
+  @Input() weatherData: OpenWeatherMapMappedData = {
     weatherIcon: '',
     description: '',
     degree: 0,

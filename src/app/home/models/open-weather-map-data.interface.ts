@@ -1,5 +1,5 @@
 
-export interface FullWeatherData {
+export interface OpenWeatherMapData {
   weather: [
     {
       description: string,

@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class DrawCity {
 
-  constructor() { }
-
   private cityIdObj: string[]= [];
   private cityKey = '';
   private chosenCity: string[] = [];

@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://api.openweathermap.org/data/2.5/weather',
-  appid: 'b7fd55ae9eb65b6ae897e500d292df43',
-  units: 'metric'
 };
+
+export const openWeatherMapApi = {
+  url: 'http://api.openweathermap.org/data/2.5/weather',
+  key: 'b7fd55ae9eb65b6ae897e500d292df43',
+  appUnits: 'metric'
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

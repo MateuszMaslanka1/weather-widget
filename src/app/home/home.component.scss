@@ -1,6 +1,6 @@
 @import "../styles/colors";
 section {
-  background: $main-background-container;
+  background: $main-background;
   padding: 2rem 1rem;
   max-width: 500px;
   width: 100%;
@@ -9,7 +9,7 @@ section {
     h1 {
       font-size: 2.5rem;
       font-weight: bold;
-      color: $font-color;
+      color: $font;
       text-align: center;
       padding: 1rem 0;
     }

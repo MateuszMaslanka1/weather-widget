@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FullWeatherData } from './models/full-weather-data.interface';
-import { WeatherData } from './models/weather-data.interface';
-import { DrawCity } from './services/draw-city.service';
+import { OpenWeatherMapData } from './models/open-weather-map-data.interface';
+import { OpenWeatherMapMappedData } from './models/open-weather-map-mapped-data.interface';
+import { DrawCity } from './services/cities-generating.service';
 import { RefreshWeatherService } from './services/refresh-weather.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
  private drawCityArray: string[] = [];
  private changeCitiesCounter = 0;
- public weatherDataObject?: Observable<WeatherData[]>;
+ public weatherDataObject?: Observable<OpenWeatherMapMappedData[]>;
 
   ngOnInit(): void {
     this.drawCityArray = this.drawCity.setCity(this.cityIdTab);
@@ -46,8 +46,8 @@ export class HomeComponent implements OnInit {
       this.changeCitiesCounter = 0;
     }
     this.weatherDataObject = this.refreshWeatherService.refreshWeather(this.drawCityArray).pipe(
-      map((response: FullWeatherData[]): WeatherData[] => response.map((item: FullWeatherData): WeatherData => {
-        return <WeatherData>{
+      map((response: OpenWeatherMapData[]): OpenWeatherMapMappedData[] => response.map((item: OpenWeatherMapData): OpenWeatherMapMappedData => {
+        return <OpenWeatherMapMappedData>{
           weatherIcon: item.weather[0].icon,
           description: item.weather[0].description,
           degree: item.main.temp,

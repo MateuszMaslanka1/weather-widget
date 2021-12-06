@@ -1,4 +1,4 @@
-export interface WeatherData {
+export interface OpenWeatherMapMappedData {
     weatherIcon: string,
     description: string,
     degree: number,
