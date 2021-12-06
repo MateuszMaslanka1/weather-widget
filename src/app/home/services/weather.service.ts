@@ -7,21 +7,22 @@ import { OpenWeatherMapData } from '../models/open-weather-map-data.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class RefreshWeatherService {
+export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  weatherApi(id: string): Observable<OpenWeatherMapData> {
+  getWeathersForCities(getChosenCities: string[]): Observable<OpenWeatherMapData[]> {
+    return forkJoin(getChosenCities.map((cityId: string): Observable<OpenWeatherMapData> => this.getOpenWeatherMapData(cityId)));
+  }
+
+  private getOpenWeatherMapData(cityId: string): Observable<OpenWeatherMapData> {
     return this.httpClient.get<OpenWeatherMapData>(openWeatherMapApi.url, {
       params: {
-        id: id,
+        id: cityId,
         appid: openWeatherMapApi.key,
         units: openWeatherMapApi.appUnits
       },
     });
   }
 
-  refreshWeather(getCity: string[]): Observable<OpenWeatherMapData[]> {
-    return forkJoin(getCity.map((id: string): Observable<OpenWeatherMapData> => this.weatherApi(id)));
-  }
 }

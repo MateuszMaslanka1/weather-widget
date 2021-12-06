@@ -1,5 +1,5 @@
 @import "../../styles/colors";
-@mixin set-data-in-container {
+@mixin flex-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,11 +18,11 @@ section {
     background-image: $city-gradient;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-decoration: none;
-    @media only screen and (min-width: 425px) {
+    @media screen and (min-width: 425px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    .drawing-container {
-      @include set-data-in-container;
+    .cities-generating-container {
+      @include flex-container;
       .img-container {
         min-height: 100px;
       }
@@ -31,8 +31,8 @@ section {
       }
     }
 
-    .degree-container {
-      @include set-data-in-container;
+    .weather-degrees-container {
+      @include flex-container;
       .city-name {
         font-size: 1.2rem;
       }
@@ -40,7 +40,7 @@ section {
         font-size: 3rem;
         font-weight: bold;
       }
-      @media only screen and (min-width: 425px) {
+      @media screen and (min-width: 425px) {
         text-align: center;
       }
     }

@@ -3,28 +3,23 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class DrawCity {
+export class CitiesGeneratingService {
 
-  private cityIdObj: string[]= [];
+  private cityIds: string[]= [];
   private cityKey = '';
-  private chosenCity: string[] = [];
+  private chosenCities: string[] = [];
 
-  public drawCity(): void {
-    this.cityKey = this.cityIdObj[Math.floor(Math.random() * this.cityIdObj.length)];
-    const filtredCityId = this.cityIdObj.filter((el: string): boolean => {
-      return el !== this.cityKey
-    });
-    this.cityIdObj = filtredCityId;
-    this.chosenCity.push(this.cityKey);
+  private saveRandomCity(): void {
+    this.cityKey = this.cityIds[Math.floor(Math.random() * this.cityIds.length)];
+    const filtredCityId = this.cityIds.filter((id: string): boolean => id !== this.cityKey);
+    this.cityIds = filtredCityId;
+    this.chosenCities.push(this.cityKey);
   }
 
-  public setCity(cityIdObj: string[]): string[] {
-    this.chosenCity = [];
-    this.cityIdObj = cityIdObj;
-    const times = 3;
-    for (let i = 0; i < times; i++) {
-      this.drawCity();
-    }
-    return this.chosenCity;
+  setCity(cityIds: string[]): string[] {
+    this.chosenCities = [];
+    this.cityIds = cityIds;
+    Array.from(Array(3)).forEach(() => this.saveRandomCity())
+    return this.chosenCities;
   }
 }

@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { OpenWeatherMapData } from './models/open-weather-map-data.interface';
 import { OpenWeatherMapMappedData } from './models/open-weather-map-mapped-data.interface';
-import { DrawCity } from './services/cities-generating.service';
-import { RefreshWeatherService } from './services/refresh-weather.service';
+import { CitiesGeneratingService } from './services/cities-generating.service';
+import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ import { RefreshWeatherService } from './services/refresh-weather.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private drawCity: DrawCity, private refreshWeatherService: RefreshWeatherService) { }
+  constructor(private citiesGeneratingService: CitiesGeneratingService, private weatherService: WeatherService) { }
 
   private cityIdTab: string[] = [
     '2950159',
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
  public weatherDataObject?: Observable<OpenWeatherMapMappedData[]>;
 
   ngOnInit(): void {
-    this.drawCityArray = this.drawCity.setCity(this.cityIdTab);
+    this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
     this.weatherDataApi();
     this.startInterval();
   };
@@ -42,10 +42,10 @@ export class HomeComponent implements OnInit {
 
   weatherDataApi(): void {
     if (this.changeCitiesCounter === 6) {
-      this.drawCityArray = this.drawCity.setCity(this.cityIdTab);
+      this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
       this.changeCitiesCounter = 0;
     }
-    this.weatherDataObject = this.refreshWeatherService.refreshWeather(this.drawCityArray).pipe(
+    this.weatherDataObject = this.weatherService.getWeathersForCities(this.drawCityArray).pipe(
       map((response: OpenWeatherMapData[]): OpenWeatherMapMappedData[] => response.map((item: OpenWeatherMapData): OpenWeatherMapMappedData => {
         return <OpenWeatherMapMappedData>{
           weatherIcon: item.weather[0].icon,
