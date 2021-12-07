@@ -10,6 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 1. In the console, go to the project folder `\weather-widget`
 2. Add package typing in console `npm i`
 3. Run Application typing in console `npm start`
+## Description
+
+WeatherWidget, The application shows the current weather for three cities. This weather widget refreshes the weather every ten seconds and change cities every one minute to the next
 
 ## Code scaffolding
 

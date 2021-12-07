@@ -19,7 +19,7 @@ export class CitiesGeneratingService {
   setCity(cityIds: string[]): string[] {
     this.chosenCities = [];
     this.cityIds = cityIds;
-    Array.from(Array(3)).forEach(() => this.saveRandomCity())
+    Array.from(Array(3)).forEach((): void => this.saveRandomCity())
     return this.chosenCities;
   }
 }

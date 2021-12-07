@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
  private drawCityArray: string[] = [];
  private changeCitiesCounter = 0;
- public weatherDataObject?: Observable<OpenWeatherMapMappedData[]>;
+ weatherDataForCities?: Observable<OpenWeatherMapMappedData[]>;
 
   ngOnInit(): void {
     this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
       this.changeCitiesCounter = 0;
     }
-    this.weatherDataObject = this.weatherService.getWeathersForCities(this.drawCityArray).pipe(
+    this.weatherDataForCities = this.weatherService.getWeathersForCities(this.drawCityArray).pipe(
       map((response: OpenWeatherMapData[]): OpenWeatherMapMappedData[] => response.map((item: OpenWeatherMapData): OpenWeatherMapMappedData => {
         return <OpenWeatherMapMappedData>{
           weatherIcon: item.weather[0].icon,
