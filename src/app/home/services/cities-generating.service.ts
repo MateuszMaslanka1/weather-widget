@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CitiesGeneratingService {
 
-  private cityIds: string[]= [];
-  private cityKey = '';
+  private cityIds: string[] = [];
+  private cityKey: string = '';
   private chosenCities: string[] = [];
 
   private saveRandomCity(): void {
@@ -16,7 +16,7 @@ export class CitiesGeneratingService {
     this.chosenCities.push(this.cityKey);
   }
 
-  setCity(cityIds: string[]): string[] {
+  getChosenCities(cityIds: string[]): string[] {
     this.chosenCities = [];
     this.cityIds = cityIds;
     Array.from(Array(3)).forEach((): void => this.saveRandomCity())

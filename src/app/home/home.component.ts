@@ -24,11 +24,11 @@ export class HomeComponent implements OnInit {
   ];
 
  private drawCityArray: string[] = [];
- private changeCitiesCounter = 0;
+ private changeCitiesCounter: number = 0;
  weatherDataForCities?: Observable<OpenWeatherMapMappedData[]>;
 
   ngOnInit(): void {
-    this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
+    this.drawCityArray = this.citiesGeneratingService.getChosenCities(this.cityIdTab);
     this.weatherDataApi();
     this.startInterval();
   };
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
   weatherDataApi(): void {
     if (this.changeCitiesCounter === 6) {
-      this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
+      this.drawCityArray = this.citiesGeneratingService.getChosenCities(this.cityIdTab);
       this.changeCitiesCounter = 0;
     }
     this.weatherDataForCities = this.weatherService.getWeathersForCities(this.drawCityArray).pipe(
