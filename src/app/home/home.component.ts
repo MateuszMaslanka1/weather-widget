@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.drawCityArray = this.citiesGeneratingService.setCity(this.cityIdTab);
     this.weatherDataApi();
-    // this.startInterval();
+    this.startInterval();
   };
 
   startInterval(): void {
