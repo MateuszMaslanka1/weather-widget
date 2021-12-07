@@ -11,8 +11,8 @@ export class CitiesGeneratingService {
 
   private saveRandomCity(): void {
     this.cityKey = this.cityIds[Math.floor(Math.random() * this.cityIds.length)];
-    const filtredCityId = this.cityIds.filter((id: string): boolean => id !== this.cityKey);
-    this.cityIds = filtredCityId;
+    const filteredCityIds: string[] = this.cityIds.filter((id: string): boolean => id !== this.cityKey);
+    this.cityIds = filteredCityIds;
     this.chosenCities.push(this.cityKey);
   }
 
