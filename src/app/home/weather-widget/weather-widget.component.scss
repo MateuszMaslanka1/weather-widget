@@ -1,8 +1,8 @@
 @import "../../styles/colors";
 
-section {
+.city-container {
   padding-bottom: 1.5rem;
-  .widget-container {
+  .weather-details-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
