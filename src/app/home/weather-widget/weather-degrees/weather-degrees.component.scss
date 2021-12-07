@@ -1,0 +1,16 @@
+@import "../../../styles/colors";
+@import "../../../styles/mixins.scss";
+
+.weather-degrees-container {
+  @include flex-container;
+  .city-name {
+    font-size: 1.2rem;
+  }
+  .degree {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  @media screen and (min-width: 425px) {
+      text-align: center;
+  }
+}

@@ -1,9 +1,4 @@
 @import "../../styles/colors";
-@mixin flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 section {
   padding-bottom: 1.5rem;
@@ -20,29 +15,6 @@ section {
     text-decoration: none;
     @media screen and (min-width: 425px) {
       grid-template-columns: repeat(2, 1fr);
-    }
-    .cities-generating-container {
-      @include flex-container;
-      .img-container {
-        min-height: 100px;
-      }
-      .weather-description {
-        padding-top: .5rem;
-      }
-    }
-
-    .weather-degrees-container {
-      @include flex-container;
-      .city-name {
-        font-size: 1.2rem;
-      }
-      .degree {
-        font-size: 3rem;
-        font-weight: bold;
-      }
-      @media screen and (min-width: 425px) {
-        text-align: center;
-      }
     }
   }
 }

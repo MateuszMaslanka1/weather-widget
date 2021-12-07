@@ -1,17 +1,7 @@
 <section>
   <a class="widget-container" target="_blank" href="https://openweathermap.org/city/{{weatherData?.id}}">
-    <div class="cities-generating-container">
-      <div class="img-container">
-        <img class="weather-icon" src="http://openweathermap.org/img/wn/{{weatherData?.weatherIcon}}@2x.png" alt="weather icon" />
-      </div>
-      <p class="weather-description">{{weatherData?.description}}</p>
-    </div>
-    <div class="weather-degrees-container">
-      <p class="city-name">{{weatherData?.cityName}}</p>
-      <div class="degree">
-        <span>{{weatherData?.degree | number : '1.0-0'}}</span><span>&#176;c</span>
-      </div>
-    </div>
+    <app-weather-description [weatherData]="weatherData"></app-weather-description>
+    <app-weather-degrees [weatherData]="weatherData"></app-weather-degrees>
   </a>
 </section>
 
