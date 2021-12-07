@@ -8,7 +8,7 @@ export const environment = {
 
 export const openWeatherMapApi = {
   url: 'http://api.openweathermap.org/data/2.5/weather',
-  key: 'b7fd55ae9eb65b6ae897e500d292df43',
+  key: '7a75b70d34d773d53bdc822ebe5d59ec',
   appUnits: 'metric'
 }
 

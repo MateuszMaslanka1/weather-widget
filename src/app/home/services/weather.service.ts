@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { openWeatherMapApi } from 'src/environments/environment';
 import { OpenWeatherMapData } from '../models/open-weather-map-data.interface';
 
@@ -22,7 +23,13 @@ export class WeatherService {
         appid: openWeatherMapApi.key,
         units: openWeatherMapApi.appUnits
       },
-    });
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.error(`Backend returned code ${error.status}, body was: `, error.error);
+    return throwError('Something bad happened; please try again later.');
+  }
 }
