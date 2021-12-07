@@ -1,12 +1,9 @@
 @import "../../../styles/colors";
-@import "../../../styles/mixins.scss";
 
-.weather-description-container {
-  @include flex-container;
-  .img-container {
-    min-height: 100px;
-  }
-  .weather-description {
-    padding-top: .5rem;
-  }
+.img-container {
+  min-height: 100px;
+}
+
+.weather-description {
+  padding-top: .5rem;
 }

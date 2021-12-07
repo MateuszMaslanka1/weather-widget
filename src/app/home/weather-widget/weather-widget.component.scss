@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/mixins.scss";
 
 .city-container {
   padding-bottom: 1.5rem;
@@ -15,6 +16,15 @@
     text-decoration: none;
     @media screen and (min-width: 425px) {
       grid-template-columns: repeat(2, 1fr);
+    }
+    app-weather-description {
+      @include flex-container;
+    }
+    app-weather-degrees {
+      @include flex-container;
+      @media screen and (min-width: 425px) {
+      text-align: center;
+      }
     }
   }
 }
